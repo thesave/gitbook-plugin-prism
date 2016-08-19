@@ -26,7 +26,7 @@ Add the plugin to your `book.json`, and disable default GitBook code highlightin
 
 ```
 {
-  "plugins": ["prism", "-highlight"]
+  "plugins": ["prism_joliedoc", "-highlight"]
 }
 ```
 
