@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "prismjs": "1.5.1",
-    "cheerio": "0.21.0",
+    "cheerio": "0.21.0"
   }
 }
