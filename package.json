@@ -16,6 +16,7 @@
     "url": "https://github.com/thesave/gitbook-plugin-prism/issues"
   },
   "dependencies": {
-    "prismjs": "1.5.1"
+    "prismjs": "1.5.1",
+    "cheerio": "0.21.0",
   }
 }
