@@ -1,9 +1,11 @@
 Prism = require( 'prismjs' );
-var languages = require( 'prism-languages' );
 var path = require( 'path' );
 var cheerio = require( 'cheerio' );
 
-var prismDir = require.resolve( "prismjs/prism.js" );
+var prismDir = path.dirname( require.resolve( "prismjs/prism.js" ) );
+require( prismDir + '/components/prism-java.js');
+require( prismDir + '/components/prism-jolie.js');
+require( prismDir + '/components/prism-javascript.js');
 
 var DEFAULT_LANGUAGE = 'markup';
 var MAP_LANGUAGES = {
@@ -16,7 +18,7 @@ var MAP_LANGUAGES = {
 };
 
 var assets = {
-	assets: path.dirname( prismDir ),
+	assets: prismDir,
 	css: [ "themes/prism-okaidia.css", "plugins/line-numbers/prism-line-numbers.css" ]
 };
 
@@ -43,7 +45,7 @@ module.exports = {
 
       var lang = block.kwargs.language || DEFAULT_LANGUAGE;
       lang = MAP_LANGUAGES[lang] || lang;
-      if (!languages[lang]) lang = DEFAULT_LANGUAGE;
+      if (!Prism.languages[lang]) lang = DEFAULT_LANGUAGE;
 
       // Check against html, prism "markup" works for this
       if (lang === 'html') {
@@ -75,7 +77,7 @@ module.exports = {
 
       try {
         // The process can fail (failed to parse)
-        highlighted = Prism.highlight( block.body, languages[lang] );
+        highlighted = Prism.highlight( block.body, Prism.languages[lang] );
         if ( line_numbers !== undefined ){
         	highlighted = highlighted + line_numbers;
         }
